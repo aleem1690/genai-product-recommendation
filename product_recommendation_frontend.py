@@ -42,7 +42,7 @@ def main():
         else:
             st.warning("Oops! Please share your product needs with us, either through text or voice recording.")
 
-    if process_button:
+    if process_button.sidebar.button("Processing Input"):
         prod_recom = process_recommendation(user_input)
         
         # Right section - Newsletter content
