@@ -1,2 +1,3 @@
 streamlit
 modal
+audio-recorder-streamlit
