@@ -1,6 +1,5 @@
-
-
 import streamlit as st
+from audio_recorder_streamlit import audio_recorder
 import modal
 import json
 import os
@@ -25,7 +24,8 @@ def main():
     else:
         # Voice recording option
         st.write("Record your product needs in your own voice!")
-        product_needs_voice = st.audio_recorder("Record your product needs (voice)", format="wav")
+        audio_bytes = audio_recorder()
+        product_needs_voice = st.audio(audio_bytes, format="audio/wav")
 
     if st.button("Submit"):
         if product_needs_text or product_needs_voice:
