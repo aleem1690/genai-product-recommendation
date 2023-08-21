@@ -16,8 +16,8 @@ def main():
     input_type = st.radio("Select input type:", ["Text", "Voice"])
 
     # Initialize variables
-    product_needs_text = None
-    product_needs_voice = None
+    product_needs_text = ""
+    product_needs_audio = None
 
     if input_type == "Text":
         # Text box for sharing product needs
@@ -25,7 +25,7 @@ def main():
     else:
         # Voice recording option
         st.write("Record your product needs in your own voice!")
-        product_needs_voice = st.audio_record("Record your product needs (voice)", format="wav")
+        product_needs_voice = st.audio_recorder("Record your product needs (voice)", format="wav")
 
     if st.button("Submit"):
         if product_needs_text or product_needs_voice:
