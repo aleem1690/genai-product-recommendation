@@ -30,16 +30,34 @@ def main():
     if st.button("Submit"):
         if product_needs_text or product_needs_voice:
             st.success("Thank you for sharing! 🙌 Your input is valuable to us.")
+            process_button = st.sidebar.button("Processing Input")
+            st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
             
             # Store the user input in variables
             user_input = product_needs_text if input_type == "Text" else product_needs_voice
             
             # Now you can use 'user_input' for further processing
             # For example, print it to check the value:
-            st.write("User Input:", user_input)
-            
+            st.write("User Input:", user_input) 
         else:
             st.warning("Oops! Please share your product needs with us, either through text or voice recording.")
+
+    if process_button:
+        prod_recom = process_recommendation(user_input)
+        
+        # Right section - Newsletter content
+        st.header("Products Recommended")
+
+        # Display the podcast title
+        st.subheader("Products")
+        st.write(prod_recom)
+
+    
+def process_recommendation(user_input):
+    f = modal.Function.lookup("corise-prod_recommendation-project", "prod_recommendation")
+    output = f.call(url, '/content/podcast/')
+    return output
+    
 
 
 
