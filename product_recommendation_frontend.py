@@ -35,22 +35,22 @@ def main():
             
             # Store the user input in variables
             user_input = product_needs_text if input_type == "Text" else product_needs_voice
+            prod_recom = process_recommendation(user_input)
             
             # Now you can use 'user_input' for further processing
             # For example, print it to check the value:
-            st.write("User Input:", user_input) 
+            st.write("Product Recommended:", prod_recom) 
         else:
             st.warning("Oops! Please share your product needs with us, either through text or voice recording.")
 
-    if process_button=='True':
-        prod_recom = process_recommendation(user_input)
-        
-        # Right section - Newsletter content
-        st.header("Products Recommended")
+    # if process_button=='True':
+    #     prod_recom = process_recommendation(user_input)
+    #     # Right section - Newsletter content
+    #     st.header("Products Recommended")
 
-        # Display the podcast title
-        st.subheader("Products")
-        st.write(prod_recom)
+    #     # Display the podcast title
+    #     st.subheader("Products")
+    #     st.write(prod_recom)
 
     
 def process_recommendation(user_input):
