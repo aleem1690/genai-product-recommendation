@@ -42,25 +42,11 @@ def main():
             st.write("Product Recommended:", prod_recom) 
         else:
             st.warning("Oops! Please share your product needs with us, either through text or voice recording.")
-
-    # if process_button=='True':
-    #     prod_recom = process_recommendation(user_input)
-    #     # Right section - Newsletter content
-    #     st.header("Products Recommended")
-
-    #     # Display the podcast title
-    #     st.subheader("Products")
-    #     st.write(prod_recom)
-
     
 def process_recommendation(user_input):
     f = modal.Function.lookup("corise-prod_recommendation-project", "prod_recommendation")
     output = f.call(url, '/content/podcast/')
     return output
-    
-
-
-
 
 if __name__ == '__main__':
     main()
