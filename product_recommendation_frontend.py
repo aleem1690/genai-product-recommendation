@@ -45,7 +45,7 @@ def main():
     
 def process_recommendation(user_input):
     f = modal.Function.lookup("corise-prod_recommendation-project", "prod_recommendation")
-    output = f.call(url, '/content/podcast/')
+    output = f.call(user_input)
     return output
 
 if __name__ == '__main__':
